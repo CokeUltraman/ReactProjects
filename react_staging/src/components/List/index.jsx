@@ -6,18 +6,19 @@ export default class List extends Component {
 
     static propTypes={
         //对接收的props进行类型 必要性的限制
-        todo:PropTypes.array.isRequired,
-        updateTodo:PropTypes.func.isRequired
+        todos:PropTypes.array.isRequired,
+        updateTodo:PropTypes.func.isRequired,
+        deleteTodo:PropTypes.func.isRequired
     }
     render() {
         
-        const {todos,updateTodo}=this.props
+        const {todos,updateTodo,deleteTodo}=this.props
         
         return (
             <ul className="todo-main">
                 {
                     todos.map((todo)=>{
-                        return <Item key={todo.id} {...todo} updateTodo={updateTodo}/>
+                        return <Item key={todo.id} {...todo} updateTodo={updateTodo} deleteTodo={deleteTodo}/>
 
                     })
                 }

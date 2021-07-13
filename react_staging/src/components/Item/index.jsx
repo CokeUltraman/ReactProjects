@@ -18,6 +18,17 @@ export default class Item extends Component {
 
 
     }
+    //删除一个todo的回调
+    handleDelete=(id)=>{
+        if(window.confirm('Do you want to delete?')){
+
+            this.props.deleteTodo(id)
+        }
+        
+
+
+
+    }
 
     
     
@@ -32,7 +43,7 @@ export default class Item extends Component {
                         <input type="checkbox" defaultChecked={done} onChange={this.handleCheck(id)}/>
                         <span>{name}</span>
                     </label>
-                    <button className="btn btn-danger" style={{display:mouse?'block':"none"}}>删除</button>
+                    <button onClick={()=>{this.handleDelete(id)}} className="btn btn-danger" style={{display:mouse?'block':"none"}}>删除</button>
                 </li>
         )
     }
