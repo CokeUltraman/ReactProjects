@@ -5,8 +5,10 @@ import List from './components/List'
 
 export default class App extends Component {
     
-    state={state:[users:]}//初始化状态，users初始值为数组.
-    
+    state={users:[]}//初始化状态，users初始值为数组.
+    saveUsers=(users)=>{
+        this.setState({users:users})
+    }
     render() {
         return (
             <div className="container">
