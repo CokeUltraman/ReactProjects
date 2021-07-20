@@ -8,7 +8,8 @@ export default class Search extends Component {
         //console.log(keyWord)
         //发送网络请求
         axios.get(`api1/search/users?q=${keyWord}`).then(
-            response=>{console.log('success',response.data);},
+            response=>{
+                this.props.saveUsers(response.data.items)},
             error=>{console.log('fail',error);}
         )
 
