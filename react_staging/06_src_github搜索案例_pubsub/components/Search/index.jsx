@@ -3,7 +3,7 @@ import PubSub from 'pubsub-js'
 import axios from 'axios'
 export default class Search extends Component {
 
-    search=()=>{
+    search=async ()=>{
         
         //获取用户的输入(解构赋值的连续写法+重命名)
         const {keyWordElement:{value:keyWord}}=this
@@ -27,11 +27,31 @@ export default class Search extends Component {
         // )
         //#endregion
 
-        //发送网络请求 fetch发送
-          fetch('api1/search/users?q=${keyWord}').then(
-              response=>{},
-              error=>{   }
-          )
+        // //发送网络请求 fetch发送 (未优化)
+        //   fetch('api1/search/users?q=${keyWord}').then(
+        //       response=>{
+        //           console.log('联系服务器成功了')
+        //           return response.json
+        //       },
+        //       error=>{
+        //           console.log('联系服务器失败了',error)
+        //           return new Promise(()=>{})
+        //          }
+        //   ).then(
+        //       response=>{console.log('获取数据成功了',response);},
+        //       error=>{console.log('获取数据失败了',error);}
+        //   )
+
+        //发送网络请求 fetch发送 (优化)
+          try {
+            const response=await fetch('api1/search/users?q=${keyWord}')
+            const data=await response.json()
+            PubSub.publish("aaa",{isLoading:false,err:error.message.items})
+  
+          } catch (error) {
+              console.log('request error',error)
+              PubSub.publish("aaa",{isLoading:false,err:error.message})
+          }
     }
 
     render() {
