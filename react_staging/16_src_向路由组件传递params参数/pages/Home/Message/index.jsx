@@ -21,10 +21,8 @@ export default class Message extends Component {
                         messageArr.map((msgObj)=>{
                             return(
                                 <li key={msgObj.id}>
-                                    {/* 向路由组件传递params参数
-                                    <Link to={`/ddd/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>&nbsp;&nbsp; */}
-                                    {/* 向路由组件传递search参数 */}
-                                    <Link to={`/ddd/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>
+                                    {/* 向路由组件传递params参数 */}
+                                    <Link to={`/ddd/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>&nbsp;&nbsp;
                                 </li>
                             )
                         })
@@ -32,10 +30,7 @@ export default class Message extends Component {
                   </ul>
                   <hr/>
                   {/* 声明接收params参数 */}
-                  {/* <Route path='/ddd/home/message/detail/:id/:title' component={Detail}></Route> */}
-                  {/* 声明接收search参数 无需声明接收 正常注册即可*/}
-                  <Route path='/ddd/home/message/detail' component={Detail}></Route>
-
+                  <Route path='/ddd/home/message/detail/:id/:title' component={Detail}></Route>
 
             </div>
         )
