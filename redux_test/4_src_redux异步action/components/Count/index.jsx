@@ -3,7 +3,11 @@ import React, { Component } from 'react'
 //引入store,用于获取redux中保存状态
 import store from '../../redux/store'
 //引入action Creatior,专门用于创建action对象
-import {createDecrementAction,createIncrementAction} from '../../redux/count_action'
+import {
+    createDecrementAction,
+    createIncrementAction,
+    createIncrementAsyncAction
+} from '../../redux/count_action'
 export default class Count extends Component {
     // componentDidMount(){
     //     //检测redux中状态的变化，只要变化，就调用render
@@ -38,9 +42,9 @@ export default class Count extends Component {
     incrementAsync=(params) => {
         const {value}=this.selectNumber
         
-        setTimeout(()=>{
-            store.dispatch(createIncrementAction(value*1))
-        },500)
+        //setTimeout(()=>{
+            store.dispatch(createIncrementAsyncAction(value*1))
+        //},500)
     }
     
     
