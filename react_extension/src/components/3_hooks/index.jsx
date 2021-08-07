@@ -5,6 +5,7 @@ import ReactDom from 'react-dom'
     
 //     state = {count:0}
 
+//     myRef=React.createRef()
 //     add=()=>{
 //         this.setState(state=>({count:state.count+1}))
 //     }
@@ -20,12 +21,17 @@ import ReactDom from 'react-dom'
 //     componentWillUnmount(){
 //         clearInterval(this.timer)
 //     }
+//     show=()=>{
+//         this.myRef.current.value
+//     }
 //     render() {
 //         return (
 //             <div>
+//                 <input type='text' ref= {this.myRef}></input>
 //                 <h2>当前求和为{this.state.count}</h2>
 //                 <button onClick={this.add}>touch plus one</button>
 //                 <button onClick={this.unMount}>REMOVE </button>
+//                 <button onClick={this.show} >press and show the data</button>
 //             </div>
 //         )
 //     }
@@ -35,6 +41,7 @@ import ReactDom from 'react-dom'
 function Demo(){
     const [count,setCount]=React.useState(0)   
 
+    const myRef=React.useRef()
     React.userEffect(()=>{
         let timer=setInterval(()=>{
             setCount(count=>count+1)
@@ -53,11 +60,17 @@ function Demo(){
     function unMount(){
         ReactDOM.unmountComponentAtNode(document.getElementById('root'))
     }
+    //提示输入的回调
+    function show(){
+        alert(myRef.current.value)
+    }
     return (
         <div>
+            <input type='test' ref={myRef}></input>
             <h2>当前求和为{this.state.count}</h2>
             <button onClick={add}>touch plus one</button>
             <button onClick={unMount}>REMOVE </button>
+            <button onClick={show}>show</button>
         </div>
     )
 }
