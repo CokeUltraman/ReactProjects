@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom'
 //类式组件
 // export default class Demo extends Component {
     
