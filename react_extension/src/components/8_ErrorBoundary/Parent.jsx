@@ -21,6 +21,7 @@
                  
                  {this.state.hasError? <h2>internet erro,please try later</h2>:<Child/>} 
              </div>
+             
          )
      }
  }
